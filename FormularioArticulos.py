@@ -21,21 +21,21 @@ class FormularioArticulos:
         self.pagina1=ttk.Frame(self.cuaderno1)
         self.cuaderno1.add(self.pagina1, text="Carga de Articulo")
         self.LabelFrame1=ttk.LabelFrame(self.pagina1, text="Articulos")
-        self.LabelFrame1.grid(column=0, row=0 padx=5, pady=10)
+        self.LabelFrame1.grid(column=0, row=0, padx=5, pady=10)
         self.label1=ttk.Label(self.LabelFrame1,text="Description:")
-        self.label1=grid(column=0, row=0, padx=4, pady=4)
+        self.label1.grid(column=0, row=0, padx=4, pady=4)
         self.descriptioncarga=tk.StringVar()
         self.entrydescripcion=ttk.Entry(self.LabelFrame1, textvariable=self.descriptioncarga)
         self.entrydescripcion.grid(column=1, row=0, padx=4, pady=4)
-        self.label2=ttk.Label(self.LabelFrame1, text="Precio: ")
+        self.label2=ttk.Label(self.LabelFrame1, text="Precio:")
         self.label2.grid(column=1, row=0, padx=4, pady=4)
         self.preciocarga=tk.StringVar()
         self.entryprecio=ttk.Entry(self.LabelFrame1, textvariable=self.preciocarga)
         self.entryprecio.grid(column=1, row=1, padx=4, pady=4)
         self.boton1=ttk.Button(self.LabelFrame1, text="Confirmar", command=self.agregar)
-        self.boton1=grid(column=1, row=2, padx=4, pady=4) #boton para confirmar la Carga
+        self.boton1.grid(column=1, row=2, padx=4, pady=4) #boton para confirmar la Carga
 
-    def agregar (self)
+    def agregar (self):
         datos=(self.descriptioncarga.get(), self.preciocarga.get())
         self.articulo1.alta(datos)
         mb.showinfo("Los Datos fueron agregados correctamente")
@@ -65,11 +65,11 @@ class FormularioArticulos:
         self.boton1=ttk.Button(self.labelframe2, text="Consultar", command=self.Consultar)
         self.boton1.grid(column=0, row=3, padx=4, pady=4)
 
-    def sonsultar(self)
+    def sonsultar(self):
         datos=(self.codigo.get(), )
         respuesta=self.articulo1.consulta(datos)
         if len(respuesta)>0:
-            self.description.set(repuesta[0][0])
+            self.descripcion.set(respuesta[0][0])
             self.precio.set([0][1])
         else:
             self.description.set("")
@@ -93,4 +93,5 @@ class FormularioArticulos:
             self.scrolledtext1.insert(tk.END, "codigo"+ str(fila[0])+"\ndescripcion:"+str(fila[1])+"\nprecio:"+str(fila[2])+"\n\n")
 
 aplicacion1=FormularioArticulos()
+#Aplicacion1=FormularioArticulos()
 

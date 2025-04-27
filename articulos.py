@@ -13,10 +13,10 @@ class Articulos:
         cone.commit()
         cone.close()
     
-    def conculta(self, datos)
+    def conculta(self, datos):
         cone=self.abrir()
         cursor=cone.cursor()
-        sql="select descripcion, precio from articulos "where codigo=%s"
+        sql="select descripcion, precio from articulos where codigo=%s"
         cursor.execute(sql, datos)
         cone.close()
         return cursor.fetchall() #Devuelve a la Lista de TUPLAS
@@ -24,7 +24,7 @@ class Articulos:
     def recuperar_todos(self):
         cone=self.abrir()
         cursor=cone.cursor()
-        sql="select codigo, descripcion, precio from articulos" from articulos where codigo=%s"
+        sql="select codigo, descripcion, precio from articulos from articulos where codigo=%s"
         cursor.execute(sql)
         cone.close()
         return cursor.fetchall() #Devuelve a la Lista de TUPLAS
