@@ -7,21 +7,21 @@ import articulos
 class FormularioArticulos:
     def _init_(self):
         self.articulo1=articulos.articulos()
-        self.ventana1=tk. tk()
+        self.ventana1=tk.Tk()
         self.ventana1.title("Formulario de Articulos")
-        self.cuaderno1=tk.ttk.Notebook(self.ventana1)
+        self.cuaderno1=ttk.Notebook(self.ventana1)
         self.cargar_articulos()
         self.consulta_por_codigo()
         self.listado_completo()
-        self.cuaderno1.grip(column=0, row=0, padx=10, pady=10)
+        self.cuaderno1.grid(column=0, row=0, padx=10, pady=10)
         self.venata1.mainloop()
-
+       
 
     def cargar_articulos(self):
         self.pagina1=ttk.Frame(self.cuaderno1)
         self.cuaderno1.add(self.pagina1, text="Carga de Articulo")
         self.LabelFrame1=ttk.LabelFrame(self.pagina1, text="Articulos")
-        self.LabelFrame1.grid(column=0, row=0 padx=10, pady=10)
+        self.LabelFrame1.grid(column=0, row=0 padx=5, pady=10)
         self.label1=ttk.Label(self.LabelFrame1,text="Description:")
         self.label1=grid(column=0, row=0, padx=4, pady=4)
         self.descriptioncarga=tk.StringVar()
@@ -33,6 +33,7 @@ class FormularioArticulos:
         self.entryprecio=ttk.Entry(self.LabelFrame1, textvariable=self.preciocarga)
         self.entryprecio.grid(column=1, row=1, padx=4, pady=4)
         self.boton1=ttk.Button(self.LabelFrame1, text="Confirmar", command=self.agregar)
+        self.boton1=grid(column=1, row=2, padx=4, pady=4) #boton para confirmar la Carga
 
     def agregar (self)
         datos=(self.descriptioncarga.get(), self.preciocarga.get())
@@ -49,7 +50,7 @@ class FormularioArticulos:
         self.label1=ttk.Label(self.labelframe2, text="Codigo: ")
         self.label1.grid(column=0, row=0, padx=4, pady=4)
         self.codigo=tk.StringVar()
-        self.entrycodigo=ttk.Entry(sel.labelframe2, textvariable=self.codigo)
+        self.entrycodigo=ttk.Entry(self.labelframe2, textvariable=self.codigo)
         self.entrycodigo.grid(column=1, row=0, padx=4, pady=4)
         self.label2=ttk.Label(self.labelframe2, text="Descripcion: ")
         self.label2.grid(column=0, row=1, padx=4, pady=4)
@@ -79,17 +80,17 @@ class FormularioArticulos:
         self.pagina3=ttk.Frame(self.cuaderno1)
         self.cuaderno1.add(self.pagina3, text="Listado Completo")
         self.labelframe3=ttk.Labelframe(self.pagina3, text="Articulo")
-        self.labelframe3.grid(column=0, row=0, padx=4, pady=4)
+        self.labelframe3.grid(column=0, row=0, padx=5, pady=10)
         self.boton1=ttk.Button(self.labelframe3, text="listado Completo", command=self.listar)
         self.boton1.grid(column=0, row=0, padx=4, pady=4)
-        self.scrolledtext=st.ScrolledText(self.labelframe3, width=30, height=10)
+        self.scrolledtext1=st.ScrolledText(self.labelframe3, width=30, height=10)
         self.scrolledtext1.grid(column=0, row=1, padx=10, pady=10)
 
     def listar(self):
         respuesta=self.articulo1.recuperar_todo()
         self.scrolledtext1.delete(1.0, tk.END)
         for fila in respuesta:
-            self.scrolledtext1.insert(tk.END, "codigo"+
+            self.scrolledtext1.insert(tk.END, "codigo"+ str(fila[0])+"\ndescripcion:"+str(fila[1])+"\nprecio:"+str(fila[2])+"\n\n")
 
+aplicacion1=FormularioArticulos()
 
-        
